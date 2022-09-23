@@ -9,6 +9,7 @@ include<servos/s3003_clone.scad>
 include<servos/mg90s_clone.scad>
 include<servos/sg90_clone.scad>
 include<servos/gh_s37d.scad>
+include<servos/kls_bls815.scad>
 
 // Combine all of the servo models into a single list
 SERVOLIB_SERVO_PARAMETERS =
@@ -17,7 +18,8 @@ concat
 	SERVOLIB_PARAMETERS_S3003_CLONE, 	// "S3003 (Clone)"
 	SERVOLIB_PARAMETERS_MG90S_CLONE, 	// "MG90S (Clone)"
 	SERVOLIB_PARAMETERS_SG90_CLONE,  	// "SG90 (Clone)"
-	SERVOLIB_PARAMETERS_GH_S37D 		// "GH-S37D"
+	SERVOLIB_PARAMETERS_GH_S37D, 		// "GH-S37D"
+	SERVOLIB_PARAMETERS_KLS_BLS815_8_0      // "KLS BLS815 V8.0"
 );
 
 // List of valid servo model strings:
