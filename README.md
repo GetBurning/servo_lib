@@ -14,7 +14,7 @@ of the ServoLib_ValidServoModels variable.  For example:
    echo (ServoLib_ValidServoModels);
 
 As of version 2.0.0, the supported servo models are:
-   ["S3003 (Clone)", "MG90S (Clone)", "SG90 (Clone)", "GH-S37D"]
+   ["S3003 (Clone)", "MG90S (Clone)", "SG90 (Clone)", "GH-S37D", "KLS BLS815 V8.0"]
 
 -------------------------------------------------------------------------------
 ## METHODS
