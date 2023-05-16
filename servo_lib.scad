@@ -66,9 +66,21 @@ function ServoLib_BodyWidth(servo_model) =
 function ServoLib_WingWidth(servo_model) =
 	_ServoLib_RetrieveParameter(servo_model, "wing width");
 
+// Query the width of a single wing of the specified servo model
+function ServoLib_Wing1Width(servo_model) =
+	(ServoLib_WingWidth(servo_model) -
+	 ServoLib_BodyWidth(servo_model))/2;
+
 // Query the Axle Offset of the specified servo model
 function ServoLib_AxleOffset(servo_model) =
 	_ServoLib_RetrieveParameter(servo_model, "axle offset");
+
+
+// Query the Axle top offset of the specified servo model
+function ServoLib_AxleTop(servo_model, from="wing bottom") =
+     ServoLib_ForeHeight(servo_model) +
+     ServoLib_AxleHeight(servo_model) +
+     (from == "wing bottom"? ServoLib_WingHeight(servo_model): 0);
 
 // Query the Axle Diameter of the specified servo model
 function ServoLib_AxleDiameter(servo_model) =
@@ -89,7 +101,23 @@ function ServoLib_BodyHeight(servo_model) =
 function ServoLib_SplineType(servo_model) =
 	_ServoLib_RetrieveParameter(servo_model, "spline type");
 
+// Query the Y offset of the holes for the servo model specified
+function ServoLib_HoleYOffset(servo_model, row=0) =
+     let(hole_parameters = _ServoLib_RetrieveScrewHoleParameters(servo_model),
+	 r = hole_parameters[0])
+     r [search(["y offset"], r) [0]] [1];
 
+// Query the X offset of the holes for the servo model specified
+function ServoLib_HoleXOffset(servo_model, row=0) =
+     let(hole_parameters = _ServoLib_RetrieveScrewHoleParameters(servo_model),
+	 r = hole_parameters[row])
+     r [search(["x offset"], r) [0]] [1];
+
+// Query a diameter of the mounting holes for the servo model specified
+function ServoLib_HoleDiameter(servo_model, row=0) =
+     let(hole_parameters = _ServoLib_RetrieveScrewHoleParameters(servo_model),
+	 r = hole_parameters[row])
+     r [search(["diameter"], r) [0]] [1];
 
 // Generate a model of the specified servo
 // The generated motor is centered according to the xcenter and zcenter parameters
